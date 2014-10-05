@@ -19,6 +19,8 @@ $RECYCLE.BIN/
 # =========================
 
 .idea
+.gitignore
+.gitattributes
 
 # OSX
 # =========================
