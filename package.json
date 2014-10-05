@@ -4,7 +4,7 @@
     "cordova_name": "ClearCache",
     "description": "Cordova ClearCache Plugin",
     "license": "MIT",
-    "repo": "https://github.com/cyberkatze/pdfViewer",
+    "repo": "https://github.com/cyberkatze/ClearCache",
     "keywords": [
         "cordova", "cache", "clear", "clearcache", "android"
     ],
