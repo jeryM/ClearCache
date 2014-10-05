@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="de.cyberkatze.phonegap.plugin" version="0.1.0">
+        id="de.cyberkatze.phonegap.plugin.ClearCache" version="0.1.0">
     <name>ClearCache</name>
     <description>Phonegap Android local clear cache Plugin</description>
     <license>MIT</license>
