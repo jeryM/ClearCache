@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="de.cyberkatze.phonegap.plugin" version="0.1.0">
+    <name>ClearCache</name>
+    <description>Phonegap Android local clear cache Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,phonegap,clear,cache,android,clearcache</keywords>
+
+    <js-module src="www/ClearCache.js" name="ClearCache">
+        <merges target="clearAppCache"/>
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ClearCache">
+                <param name="android-package" value="de.cyberkatze.phonegap.plugin.ClearCache"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
+        <source-file src="src/android/ClearCache.java" target-dir="src/de/cyberkatze/phonegap/plugin"/>
+    </platform>
+</plugin>

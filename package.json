@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "name": "de.cyberkatze.phonegap.plugin.ClearCache",
+    "cordova_name": "ClearCache",
+    "description": "Cordova ClearCache Plugin",
+    "license": "MIT",
+    "repo": "https://github.com/cyberkatze/pdfViewer",
+    "keywords": [
+        "cordova", "cache", "clear", "clearcache", "android"
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.3.0"
+        }
+    ]
+}
