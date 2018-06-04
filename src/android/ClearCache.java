@@ -17,8 +17,8 @@ public class ClearCache extends CordovaPlugin {
         if (action.equals("clearAppCache")) {
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
-                        clearCacheFolder(cordova.getActivity().getExternalCacheDir());
-                        callbackContext.success(); // Thread-safe.
+                       int result = clearCacheFolder(cordova.getActivity().getExternalCacheDir());
+                       callbackContext.success(result); // Thread-safe.
                 }
             });
             return true;
@@ -34,12 +34,16 @@ public class ClearCache extends CordovaPlugin {
                     if (child.isDirectory()) {
                         clearCacheFolder(child);
                     }
+
+                    Log.e(TAG, String.format("开始移除文件： %s", child.getAbsolutePath()));
                     child.delete();
                 }
             } catch(Exception e) {
                 Log.e(TAG, String.format("Failed to clean the cache, error %s", e.getMessage()));
+
+                return 1;
             }
         }
-        return deletedFiles;
+        return 0;
     }
 }
