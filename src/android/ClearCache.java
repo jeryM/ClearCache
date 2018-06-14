@@ -18,6 +18,7 @@ public class ClearCache extends CordovaPlugin {
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                        int result = clearCacheFolder(cordova.getActivity().getExternalCacheDir());
+					   result += clearCacheFolder(cordova.getActivity().getCacheDir());
                        callbackContext.success(result); // Thread-safe.
                 }
             });
