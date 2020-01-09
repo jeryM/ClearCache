@@ -15,13 +15,14 @@ public class ClearCache extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         if (action.equals("clearAppCache")) {
-            cordova.getThreadPool().execute(new Runnable() {
+            /*cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                        int result = clearCacheFolder(cordova.getActivity().getExternalCacheDir());
 					   result += clearCacheFolder(cordova.getActivity().getCacheDir());
                        callbackContext.success(result); // Thread-safe.
                 }
-            });
+            });*/
+			cordova.getThreadPool().execute(new MyRunnable(cordova,callbackContext));
             return true;
         }
         return false;
@@ -47,4 +48,23 @@ public class ClearCache extends CordovaPlugin {
         }
         return 0;
     }
+	
+	private static class MyRunnable implements Runnable {
+      private CordovaInterface cordova;
+      private CallbackContext callbackContext;
+      public MyRunnable(CordovaInterface cordova,CallbackContext callbackContext) {
+        this.cordova = cordova;
+        this.callbackContext = callbackContext;
+      }
+      @Override
+      public void run() {
+        try {
+          int result = clearCacheFolder(cordova.getActivity().getExternalCacheDir());
+          callbackContext.success(result); // Thread-safe.
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+    }
+	
 }
